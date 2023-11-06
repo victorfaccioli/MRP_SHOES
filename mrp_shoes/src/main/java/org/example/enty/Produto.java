@@ -1,26 +1,24 @@
 package org.example.enty;
 
 
-import org.example.DAO.ProdutoDAO;
-
 public class Produto {
-    private String name;
-    private Double price;
+    public static String nameProduto;
+    public static Double preco;
 
-    public String getName() {
-        return name;
+    public static String getNameProduto() {
+        return nameProduto;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nameProduto = name;
     }
 
-    public Double getPrice() {
-        return price;
+    public static Double getPreco() {
+        return preco;
     }
 
     public void setPrice(Double price) {
-        this.price = price;
+        this.preco = price;
     }
 }
 

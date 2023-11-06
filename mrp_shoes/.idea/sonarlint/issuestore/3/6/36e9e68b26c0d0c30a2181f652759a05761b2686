@@ -1,0 +1,22 @@
+
+L	java:S106"+Replace this use of System.out by a logger.(Ó£›øÿÿÿÿ8œíÍ‡º1
+G	java:S106"+Replace this use of System.out by a logger.(±çşè8íÍ‡º1
+T
+java:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8íÍ‡º1
+S
+java:S2696"6Make the enclosing method "static" or remove this set.(ëÂº8ŸíÍ‡º1
+L	java:S106"+Replace this use of System.out by a logger.(¦•¯²úÿÿÿÿ8 íÍ‡º1
+L	java:S106 "+Replace this use of System.out by a logger.(á†ºüÿÿÿÿ8 íÍ‡º1
+T
+java:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8 íÍ‡º1
+l
+java:S1874%"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(­§óùÿÿÿÿ8¡íÍ‡º1
+O
+java:S1113%"-Do not override the Object.finalize() method.(­§óùÿÿÿÿ8¡íÍ‡º1
+H
+java:S1174%"&Make this finalize() method protected.(­§óùÿÿÿÿ8¡íÍ‡º1
+L	java:S106&"+Replace this use of System.out by a logger.(¸Ø˜“øÿÿÿÿ8¢íÍ‡º1
+T
+java:S1135*"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8ö¾Î‡º1
+I
+java:S1068",Remove this unused "instance" private field.(şïë“8¤íÍ‡º1

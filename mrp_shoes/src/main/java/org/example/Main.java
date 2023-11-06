@@ -38,10 +38,15 @@ public class Main {
         System.out.println("||      opção 4 - Sair     |");
 
         int opt = input.nextInt();
-
+        input.nextLine();
         switch (opt) {
             case 1:
-                cadastrarProduto();
+                Produto produto = new Produto();
+                System.out.println("Digite o nome do produto: ");
+                produto.setName(input.nextLine());
+                System.out.println("Digite o preço: ");
+                produto.setPrice(input.nextDouble());
+                ProdutoDAO.cadastrarProduto();
                 break;
             case 2:
                 //estoqueProdutos();
@@ -58,7 +63,7 @@ public class Main {
                 break;
         }
     }
-    private static void cadastrarProduto(){
+    private static void cadastrarProdutos(){
         Produto p1 = new Produto();
         String name;
         double price;
