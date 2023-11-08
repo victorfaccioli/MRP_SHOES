@@ -1,13 +1,18 @@
 package org.example;
 
-import org.example.DAO.ProdutoDAO;
 import org.example.configuration.Conexao;
 
 import java.lang.ref.WeakReference;
 import java.util.Scanner;
 
+import static org.example.DAO.MateriaDao.cadastrarMateria;
+import static org.example.DAO.MateriaDao.verificarMateriais;
+import static org.example.DAO.ProdutoDAO.cadastrarProduto;
+import static org.example.DAO.ProdutoDAO.verificarProdutos;
+
 public class Main {
-    private static Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
         // TODO Auto-generated catch block
         Conexao conexao = new Conexao();
@@ -21,52 +26,31 @@ public class Main {
         conexao = new Conexao();
         conexao.getConnection();
 
-        System.out.println("---------------------------------------------------");
-        System.out.println("----------------Welcome to MRP---------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("------Selecione uma operação pra realizar----------");
-        System.out.println("---------------------------------------------------");
+        System.out.println("-------------------------------------------");
+        System.out.println("||------------Welcome to MRP-------------||");
+        System.out.println("||---------------------------------------||");
+        System.out.println("||-Selecione uma operação pra realizar-||");
+        System.out.println("-------------------------------------------");
         //inicia menu
         menu();
 
     }
-    private static void menu() {
-        System.out.println("---------------------------------------------------");
-        System.out.println("||      opção 1 - Cadastrar     |");
-        System.out.println("||      opção 2 - Estoque     |");
-        System.out.println("||      opção 3 - Fabricar     |");
-        System.out.println("||      opção 4 - Sair     |");
+    public static void menu() {
+        System.out.println("-------------------------------------------");
+        System.out.println("||           opção 1 - Cadastrar       ||");
+        System.out.println("||           opção 2 - Estoque         ||");
+        System.out.println("||           opção 3 - Fabricar        ||");
+        System.out.println("||           opção 4 - Sair            ||");
+        System.out.println("-------------------------------------------");
 
         int opt = input.nextInt();
-        input.nextLine();
+
         switch (opt) {
             case 1:
-                System.out.println("Digite o nome do produto: ");
-                String name = input.nextLine();
-                System.out.println("Digite o preço: ");
-                Double price = input.nextDouble();
-                ProdutoDAO.cadastrarProduto(name,price);
-                System.out.println("Agora insira os materia desse Produto:");
-                System.out.println("quantos materiais esse produto vai ter?");
-                int qt = input.nextInt();
-
-                for (int i = 0; i < qt; i++) {
-                    input.nextLine();
-                    String nameMt;
-                    int qtdMt,qtdMtNc;
-                    System.out.println("Qual o nome do material?");
-                    nameMt = input.nextLine();
-                    System.out.println("Quanto material tem no estoque?");
-                    qtdMt = input.nextInt();
-                    System.out.println("Quanto desse material será necessesario para fazer o produto?");
-                    qtdMtNc = input.nextInt();
-
-                    ProdutoDAO.cadastroMateriaias(nameMt,qtdMt,qtdMtNc);
-                }
-                menu();
+                subMenuCadastro();
                 break;
             case 2:
-                //estoqueProdutos();
+                subMenuEstoque();
                 break;
             case 3:
                 //fabricarProdutos();
@@ -75,10 +59,71 @@ public class Main {
                 System.out.println("Volte Sempre");
                 System.exit(0);
             default:
-                System.out.println("Opção Invalida!");
+                System.out.println("Opção Invalida, redirecionado para o menu principa");
                 menu();
                 break;
         }
     }
+
+    public static void subMenuCadastro(){
+        System.out.println("-------------------------------------------");
+        System.out.println("||           opção 1 - Produto        ||");
+        System.out.println("||           opção 2 - Material       ||");
+        System.out.println("-------------------------------------------");
+        int option = input.nextInt();
+        switch (option){
+            case 1:
+                cadastrarProduto();
+                break;
+            case 2:
+                cadastrarMateria();
+                break;
+            default:
+                System.out.println("Opção Invalida, redirecionado para o menu principal");
+                menu();
+
+        }
+    }
+
+    public static void subMenuEstoque(){
+        System.out.println("-------------------------------------------");
+        System.out.println("||           opção 1 - Produto        ||");
+        System.out.println("||           opção 2 - Material       ||");
+        System.out.println("-------------------------------------------");
+        int option = input.nextInt();
+        switch (option){
+            case 1:
+                verificarProdutos();
+                break;
+            case 2:
+                verificarMateriais();
+                break;
+            default:
+                System.out.println("Opção Invalida, redirecionado para o menu principal");
+                menu();
+
+        }
+    }
+    public static void subMenuFabricar(){
+        System.out.println("-------------------------------------------");
+        System.out.println("||           opção 1 - Produto        ||");
+        System.out.println("||           opção 2 - Material       ||");
+        System.out.println("-------------------------------------------");
+        int option = input.nextInt();
+        switch (option){
+            case 1:
+                verificarProdutos();
+                break;
+            case 2:
+                verificarMateriais();
+                break;
+            default:
+                System.out.println("Opção Invalida, redirecionado para o menu principal");
+                menu();
+
+        }
+    }
+
+
 }
 
