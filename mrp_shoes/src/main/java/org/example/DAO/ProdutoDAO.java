@@ -51,7 +51,7 @@ public class ProdutoDAO {
         Scanner input = new Scanner(System.in);
         System.out.println("Digite nome do produto");
         String nome = input.nextLine();
-        System.out.println("Digite o preço: ");
+        System.out.println("Digite o preï¿½o: ");
         Double preco = input.nextDouble();
 
         Conexao c = new Conexao();

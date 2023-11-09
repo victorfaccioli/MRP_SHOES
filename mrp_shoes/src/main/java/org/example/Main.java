@@ -29,14 +29,14 @@ public class Main {
         System.out.println("-------------------------------------------");
         System.out.println("||------------Welcome to MRP-------------||");
         System.out.println("||---------------------------------------||");
-        System.out.println("||-Selecione uma operação pra realizar-||");
+        System.out.println("||-Selecione uma operação pra realizar--||");
         System.out.println("-------------------------------------------");
         //inicia menu
         menu();
 
     }
     public static void menu() {
-        System.out.println("-------------------------------------------");
+        System.out.println("------------------〖MENU〗------------------");
         System.out.println("||           opção 1 - Cadastrar       ||");
         System.out.println("||           opção 2 - Estoque         ||");
         System.out.println("||           opção 3 - Fabricar        ||");
@@ -66,7 +66,7 @@ public class Main {
     }
 
     public static void subMenuCadastro(){
-        System.out.println("-------------------------------------------");
+        System.out.println("----------------〖CADASTRO〗----------------");
         System.out.println("||           opção 1 - Produto        ||");
         System.out.println("||           opção 2 - Material       ||");
         System.out.println("-------------------------------------------");
@@ -86,7 +86,7 @@ public class Main {
     }
 
     public static void subMenuEstoque(){
-        System.out.println("-------------------------------------------");
+        System.out.println("----------------〖ESTOQUE〗-----------------");
         System.out.println("||           opção 1 - Produto        ||");
         System.out.println("||           opção 2 - Material       ||");
         System.out.println("-------------------------------------------");
@@ -94,7 +94,6 @@ public class Main {
         switch (option){
             case 1:
                 verificarProdutos();
-                break;
             case 2:
                 verificarMateriais();
                 break;
@@ -105,7 +104,7 @@ public class Main {
         }
     }
     public static void subMenuFabricar(){
-        System.out.println("-------------------------------------------");
+        System.out.println("------------------〖Fabricar〗------------------");
         System.out.println("||           opção 1 - Produto        ||");
         System.out.println("||           opção 2 - Material       ||");
         System.out.println("-------------------------------------------");
@@ -123,7 +122,5 @@ public class Main {
 
         }
     }
-
-
 }
 
