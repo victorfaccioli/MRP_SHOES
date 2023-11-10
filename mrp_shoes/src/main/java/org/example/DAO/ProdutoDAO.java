@@ -1,7 +1,6 @@
 package org.example.DAO;
 
 import org.example.configuration.Conexao;
-import org.w3c.dom.ls.LSOutput;
 
 
 import java.sql.Connection;
@@ -72,9 +71,24 @@ public class ProdutoDAO {
         menu();
     }
 
-    public static void verificarProdutos(){
+    public static void verificarProdutos() {
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        ArrayList<ProdutoDAO> dados = produtoDAO.estoqueProdutos();
 
+        int index = 0;
+        System.out.println("+----+-----------+-------+");
+        System.out.println("| ID | Produto   | Preço |");
+        System.out.println("+----+-----------+-------+");
+
+        while (index < dados.size()) {
+            ProdutoDAO produto = dados.get(index);
+            System.out.printf("| %-2d | %-9s | %-5.2f |\n", produto.getProdutoId(), produto.getNome(), produto.getPreco());
+            index++;
+        }
+
+        System.out.println("+----+-----------+-------+");
     }
+
 
     public ArrayList<ProdutoDAO> estoqueProdutos() {
         Conexao c = new Conexao();
@@ -91,6 +105,8 @@ public class ProdutoDAO {
                 Double preco = resultSet.getDouble("preco");
                 ProdutoDAO produtoDao = new ProdutoDAO();
                 produtoDao.setProdutoId(produtoId);
+                produtoDao.setNome(nome);
+                produtoDao.setPreco(preco);
                 list.add(produtoDao);
             }
             resultSet.close();
