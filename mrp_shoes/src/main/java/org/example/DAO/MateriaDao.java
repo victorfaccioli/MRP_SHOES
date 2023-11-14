@@ -67,7 +67,7 @@ public class MateriaDao {
         Integer quantidade_necessario = input.nextInt();
         System.out.println("Digite quantos materiais possui em estoque atualmente:");
         Integer quantidade_material = input.nextInt();
-        System.out.println("Digite o código do produto para vincular o material");
+        System.out.println("Digite o cï¿½digo do produto para vincular o material");
         Integer produto_id = input.nextInt();
 
 
@@ -97,22 +97,21 @@ public class MateriaDao {
         ArrayList<MateriaDao> dados = materialDao.estoqueTodosMateriais();
 
         int index = 0;
-
+        System.out.println("+----+------------+------------+-------------+-------------------+");
+        System.out.println("| ID | Material   | Quantidade | Quantidade  | Produto vinculado | ");
+        System.out.println("+----+------------| necessaria |  estoque    |-------------------+");
 
         while (index < dados.size()) {
             MateriaDao materia = dados.get(index);
-            System.out.println("+----+------------+------------+-------------+-------------------+");
-            System.out.println("| ID | Material   | Quantidade | Quantidade  | Produto vinculado | ");
-            System.out.println("+----+------------| necessaria |-estoque-----|-------------------+");
-            System.out.printf("| %-2d|%-9s|    %-2d    |    %-2d     |       %-2d        |\n",
-            materia.getMaterialId(),
+            System.out.printf("| %-2d |  %-9s  |    %-2d    |    %-2d     |       %-2d        |\n",
+                    materia.getMaterialId(),
                     materia.getNomeMaterial(),
                     materia.getQuantidadeNecessario(),
                     materia.getQuantidadeMaterial(),
                     materia.getProdutoId());
-            System.out.println("+----+------------+------------+-------------+-------------------+");
             index++;
         }
+            System.out.println("+----+------------+------------+-------------+-------------------+");
         try {
             for (int i = 0; i < 3; i++) {
                 TimeUnit.SECONDS.sleep(5);
@@ -173,11 +172,18 @@ public class MateriaDao {
         Connection con = c.getConnection();
 
         MateriaDao materiaDao = new MateriaDao();
+        Scanner input = new Scanner(System.in);
+
+
+        System.out.println("Digite o ID do material: ");
+        Integer ID_material = input.nextInt();
+        System.out.println("Digite a quantidade que serÃ¡ adicionada ao estoque?:");
+        Integer entradaMaterial = input.nextInt();
 
         try {
             PreparedStatement selectStatement = con.prepareStatement("SELECT material_id, quantidade_material " +
                     "FROM materiais where material_id = ?");
-            selectStatement.setInt(1, materiaDao.getMaterialId());
+            selectStatement.setInt(1, ID_material);
             ResultSet resultSet = selectStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -186,9 +192,9 @@ public class MateriaDao {
                 Integer currentQuantidade = resultSet.getInt("quantidade_material");
 
 
-                Integer newQuantidade = currentQuantidade + materiaDao.getQuantidadeMaterial();
+                Integer newQuantidade = currentQuantidade + entradaMaterial;
 
-                PreparedStatement updateStatement = con.prepareStatement("update materiais set quantidade_material = ? where id = ?");
+                PreparedStatement updateStatement = con.prepareStatement("update materiais set quantidade_material = ? where material_id = ?");
                 updateStatement.setInt(1, newQuantidade);
                 updateStatement.setInt(2, currentId);
                 System.out.println(updateStatement);
