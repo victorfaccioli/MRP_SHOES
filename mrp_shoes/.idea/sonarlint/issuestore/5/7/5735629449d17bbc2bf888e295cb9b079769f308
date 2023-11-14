@@ -1,0 +1,29 @@
+
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Óï–ÿÿÿÿÿ8ëŒ­‡»1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úë‰“8ìŒ­‡»1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èé…«ıÿÿÿÿ8íŒ­‡»1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÑ…õ8íŒ­‡»1
+{
+java:S1104"YMake nome_material a static final constant or non-public and provide accessors if needed.(İÑ„­ÿÿÿÿÿ8íŒ­‡»1
+
+java:S1104"_Make quantidade_material a static final constant or non-public and provide accessors if needed.(Ú¿±øÿÿÿÿ8íŒ­‡»1
+ƒ
+java:S1104"aMake quantidade_necessario a static final constant or non-public and provide accessors if needed.(ˆÖ§ıÿÿÿÿ8îŒ­‡»1
+x
+java:S1104"VMake produto_id a static final constant or non-public and provide accessors if needed.(‹í¹Äüÿÿÿÿ8îŒ­‡»1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–®‘Õùÿÿÿÿ8ğŒ­‡»1
+q
+java:S2095$"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(î¦Ëıÿÿÿÿ8ƒ­‡»1
+y	java:S116"XRename this field "nome_material" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İÑ„­ÿÿÿÿÿ8„­‡»1
+	java:S116"^Rename this field "quantidade_material" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú¿±øÿÿÿÿ8„­‡»1
+	java:S116"`Rename this field "quantidade_necessario" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÖ§ıÿÿÿÿ8„­‡»1
+v	java:S116"URename this field "produto_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹í¹Äüÿÿÿÿ8„­‡»1
+
+java:S11863"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŞŠÊÛ8…­‡»1
+G	java:S106"+Replace this use of System.out by a logger.(Œ¸‚¤8­‡»1
+L	java:S106"+Replace this use of System.out by a logger.(•Öê¶ùÿÿÿÿ8­‡»1
+L	java:S106"+Replace this use of System.out by a logger.(«¸­íûÿÿÿÿ8­‡»1
+L	java:S106"+Replace this use of System.out by a logger.(×Ò¨­ùÿÿÿÿ8­‡»1
+G	java:S106*"+Replace this use of System.out by a logger.(ÒŸêÄ8’­‡»1
+T
+java:S1135-"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8“­‡»1

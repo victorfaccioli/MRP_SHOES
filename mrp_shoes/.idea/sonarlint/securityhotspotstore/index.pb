@@ -7,3 +7,7 @@ S
 #src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 =
 mrp_shoes.iml,1\d\1d21f595745a925e468b71ff4cd5a6f7f04e8c12
+]
+-src/main/java/org/example/DAO/MateriaDao.java,5\7\5735629449d17bbc2bf888e295cb9b079769f308
+]
+-src/main/java/org/example/DAO/ProdutoDAO.java,b\c\bc83f1c0e67840386bead1408a75b74f99db3165

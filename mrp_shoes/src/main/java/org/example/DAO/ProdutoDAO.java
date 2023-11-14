@@ -10,8 +10,10 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import static org.example.Main.menu;
+import static org.example.Main.subMenuEstoque;
 
 public class ProdutoDAO {
 
@@ -50,14 +52,16 @@ public class ProdutoDAO {
         Scanner input = new Scanner(System.in);
         System.out.println("Digite nome do produto");
         String nome = input.nextLine();
-        System.out.println("Digite o pre�o: ");
+        System.out.println("Digite o preco: ");
         Double preco = input.nextDouble();
 
         Conexao c = new Conexao();
         Connection con = c.getConnection();
 
         try {
-            PreparedStatement p = con.prepareStatement("insert into produto (nome_produto, preco) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement p = con.prepareStatement("insert into produto " +
+                    "(nome_produto, preco)" +
+                    " values (?, ?)", Statement.RETURN_GENERATED_KEYS);
             p.setString(1, nome);
             p.setDouble(2, preco);
             p.executeUpdate();
@@ -71,7 +75,7 @@ public class ProdutoDAO {
         menu();
     }
 
-    public static void verificarProdutos() {
+    public static void verificarTodosProdutos() {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         ArrayList<ProdutoDAO> dados = produtoDAO.estoqueProdutos();
 
@@ -82,11 +86,21 @@ public class ProdutoDAO {
 
         while (index < dados.size()) {
             ProdutoDAO produto = dados.get(index);
-            System.out.printf("| %-2d | %-9s | %-5.2f |\n", produto.getProdutoId(), produto.getNome(), produto.getPreco());
+            System.out.printf("| %-2d | %-9s | %-5.2f |\n",
+                    produto.getProdutoId(), produto.getNome(), produto.getPreco());
             index++;
         }
 
         System.out.println("+----+-----------+-------+");
+
+        try {
+            for (int i = 0; i < 3; i++) {
+                TimeUnit.SECONDS.sleep(5);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        subMenuEstoque();
     }
 
 
@@ -103,6 +117,7 @@ public class ProdutoDAO {
                 Integer produtoId = resultSet.getInt("produto_id");
                 String nome = resultSet.getString("nome_produto");
                 Double preco = resultSet.getDouble("preco");
+
                 ProdutoDAO produtoDao = new ProdutoDAO();
                 produtoDao.setProdutoId(produtoId);
                 produtoDao.setNome(nome);
@@ -118,5 +133,14 @@ public class ProdutoDAO {
         return list;
 
     }
+
+
+    public static void fabricarProduto(){
+
+    }
+
+
+
+
 }
 

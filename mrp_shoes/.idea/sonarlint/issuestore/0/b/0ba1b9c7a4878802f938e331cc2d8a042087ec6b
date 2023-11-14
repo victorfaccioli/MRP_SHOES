@@ -1,10 +1,50 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(î°İÁûÿÿÿÿ8Ô™à‡º1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(î°İÁûÿÿÿÿ8¡­‡»1
+‘
+java:S1192F"oDefine a constant instead of duplicating this literal "||           opÃƒÂ§ÃƒÂ£o 1 - Produto        ||" 3 times.(šô²×ùÿÿÿÿ8¢­‡»1
+Š
+java:S1192"mDefine a constant instead of duplicating this literal "-------------------------------------------" 10 times.(ËŞõŒ8¢­‡»1
+–
+java:S1192R"zDefine a constant instead of duplicating this literal "OpÃƒÂ§ÃƒÂ£o Invalida, redirecionado para o menu principal" 3 times.(êèæJ8¢­‡»1
+Œ
+java:S1192G"oDefine a constant instead of duplicating this literal "||           opÃƒÂ§ÃƒÂ£o 2 - Material       ||" 3 times.(€ù£·8£­‡»1
+{
+java:S4144k"^Update this method so that its implementation is not identical to "subMenuEstoque" on line 88.(Àâ•²8°­‡»1
 _
-java:S1854"=Remove this useless assignment to local variable "reference".(î°İÁûÿÿÿÿ8–÷ü‡º1
+java:S1854"=Remove this useless assignment to local variable "reference".(î°İÁûÿÿÿÿ8¶­‡»1
 T
-java:S1135	"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8Ú™à‡º1
+java:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8¶­‡»1
 P
-java:S1481".Remove this unused "reference" local variable.(î°İÁûÿÿÿÿ8˜÷ü‡º1
-W	java:S125"<This block of commented-out lines of code should be removed.(õØä~8˜÷ü‡º1
+java:S1481".Remove this unused "reference" local variable.(î°İÁûÿÿÿÿ8·­‡»1
+W	java:S125"<This block of commented-out lines of code should be removed.(õØä~8·­‡»1
+G	java:S106"+Replace this use of System.out by a logger.(ËŞõŒ8¸­‡»1
+G	java:S106"+Replace this use of System.out by a logger.(´¼¡€8¸­‡»1
+G	java:S106"+Replace this use of System.out by a logger.(ÀÙèÓ8¸­‡»1
+L	java:S106 "+Replace this use of System.out by a logger.(æíÄúÿÿÿÿ8¸­‡»1
+G	java:S106!"+Replace this use of System.out by a logger.(ËŞõŒ8¸­‡»1
+G	java:S106'"+Replace this use of System.out by a logger.(ËŞõŒ8¹­‡»1
+L	java:S106("+Replace this use of System.out by a logger.(Ùªçéÿÿÿÿÿ8¹­‡»1
+G	java:S106)"+Replace this use of System.out by a logger.(·ß»ş8¹­‡»1
+L	java:S106*"+Replace this use of System.out by a logger.(Å·‰öøÿÿÿÿ8¹­‡»1
+G	java:S106+"+Replace this use of System.out by a logger.(’éı­8º­‡»1
+G	java:S106,"+Replace this use of System.out by a logger.(ËŞõŒ8º­‡»1
+m	java:S128:"LEnd this switch case with an unconditional break, return or throw statement.(µ»ïşıÿÿÿÿ8º­‡»1
+]	java:S1258"<This block of commented-out lines of code should be removed.(æ¬Ò®ûÿÿÿÿ8º­‡»1
+G	java:S106;"+Replace this use of System.out by a logger.(øìÅ¹8»­‡»1
+G	java:S106>"+Replace this use of System.out by a logger.(‘°‹ò8»­‡»1
+G	java:S106E"+Replace this use of System.out by a logger.(ËŞõŒ8»­‡»1
+L	java:S106F"+Replace this use of System.out by a logger.(šô²×ùÿÿÿÿ8¼­‡»1
+G	java:S106G"+Replace this use of System.out by a logger.(€ù£·8¼­‡»1
+G	java:S106H"+Replace this use of System.out by a logger.(ËŞõŒ8¼­‡»1
+F	java:S106R"+Replace this use of System.out by a logger.(êèæJ8¼­‡»1
+G	java:S106Y"+Replace this use of System.out by a logger.(ËŞõŒ8½­‡»1
+L	java:S106Z"+Replace this use of System.out by a logger.(šô²×ùÿÿÿÿ8½­‡»1
+G	java:S106["+Replace this use of System.out by a logger.(€ù£·8½­‡»1
+G	java:S106\"+Replace this use of System.out by a logger.(ËŞõŒ8½­‡»1
+F	java:S106f"+Replace this use of System.out by a logger.(êèæJ8À­‡»1
+G	java:S106l"+Replace this use of System.out by a logger.(ËŞõŒ8Ã­‡»1
+L	java:S106m"+Replace this use of System.out by a logger.(šô²×ùÿÿÿÿ8Ä­‡»1
+G	java:S106n"+Replace this use of System.out by a logger.(€ù£·8Å­‡»1
+G	java:S106o"+Replace this use of System.out by a logger.(ËŞõŒ8Æ­‡»1
+F	java:S106y"+Replace this use of System.out by a logger.(êèæJ8É­‡»1

@@ -1,0 +1,17 @@
+
+y
+java:S1104"WMake nameProduto a static final constant or non-public and provide accessors if needed.(˜ÃÚÍşÿÿÿÿ8ÒÅÊ”º1
+n
+java:S1104"QMake preco a static final constant or non-public and provide accessors if needed.(æâ™8ÁË”º1
+S
+java:S1444"1Make this "public static nameProduto" field final(˜ÃÚÍşÿÿÿÿ8ÓÅÊ”º1
+H
+java:S1444"+Make this "public static preco" field final(æâ™8ÁË”º1
+S
+java:S2696"6Make the enclosing method "static" or remove this set.(ÇãÌô8ñ¶Ä”º1
+R
+java:S2209"5Change this instance-reference to a static reference.(ÇãÌô8ò¶Ä”º1
+S
+java:S2696"6Make the enclosing method "static" or remove this set.(»–‹¬8‚ñÄ”º1
+R
+java:S2209"5Change this instance-reference to a static reference.(»–‹¬8‚ñÄ”º1
