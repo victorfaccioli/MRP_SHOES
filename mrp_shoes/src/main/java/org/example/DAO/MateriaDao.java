@@ -182,7 +182,7 @@ public class MateriaDao {
 
         try {
             PreparedStatement selectStatement = con.prepareStatement("SELECT material_id, quantidade_material " +
-                    "FROM materiais where material_id = ?");
+                    "from materiais where material_id = ?");
             selectStatement.setInt(1, ID_material);
             ResultSet resultSet = selectStatement.executeQuery();
 

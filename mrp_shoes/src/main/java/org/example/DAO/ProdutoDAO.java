@@ -148,15 +148,25 @@ public class ProdutoDAO {
         Scanner input = new Scanner(System.in);
 
         ProdutoDAO produto = new ProdutoDAO();
-        produto.quantidadePossivel();
-        System.out.println("Quantos produtos deseja fazer? (Max. possivel: " + produto.getQuantidadePossivel() +")" );
+        System.out.println("Qual ID produto que deseja fabricar: ");
+        Integer produto_id = input.nextInt();
+        Integer qtPossivel = produto.quantidadePossivel(produto_id);
+        System.out.println("Quantos produtos deseja fazer? (Max. possivel: " + qtPossivel +")" );
         Integer quantidadeFabricar = input.nextInt();
-        if(quantidadeFabricar > 0 ){
+        if(quantidadeFabricar > 0 && quantidadeFabricar <= qtPossivel){
+            try{
 
+            }catch(SQLException e) {
 
+            }
+        }else if(quantidadeFabricar > qtPossivel){
+            System.out.println("Essa quantidade não pode ser fabricada por falta de material.");
+            menu();
+        }else {
+            System.out.println("digite uma quantidade valida");
         }
     }
-    public static void quantidadePossivel(){
+    public static Integer quantidadePossivel(Integer id){
         Scanner input = new Scanner(System.in);
         Conexao c = new Conexao();
         Connection con = c.getConnection();
@@ -164,8 +174,7 @@ public class ProdutoDAO {
         Integer quantidadepossivel = 0;
 
         ProdutoDAO produto = new ProdutoDAO();
-        System.out.println("Qual ID produto que deseja fabricar: ");
-        produto.setProdutoId(input.nextInt());
+        produto.setProdutoId(id);
         try{
 
             PreparedStatement p = con.prepareStatement("select quantidade_material, quantidade_necessaria " +
@@ -173,12 +182,12 @@ public class ProdutoDAO {
             p.setInt(1,produto.getProdutoId());
             ResultSet resultSet = p.executeQuery();
 
+            if (resultSet.next()) {
                 Integer quantidadeMaterial = resultSet.getInt("quantidade_material");
                 Integer quantidadeNecessaria = resultSet.getInt("quantidade_necessaria");
-
-
-            if (quantidadeMaterial > 0 && quantidadeMaterial >= quantidadeNecessaria){
-                quantidadepossivel = (quantidadeMaterial / quantidadeNecessaria);
+                if (quantidadeMaterial > 0 && quantidadeMaterial >= quantidadeNecessaria){
+                    quantidadepossivel = (quantidadeMaterial / quantidadeNecessaria);
+                }
             }
             resultSet.close();
             p.close();
@@ -188,7 +197,7 @@ public class ProdutoDAO {
             System.out.println("Não há estoque do material suficiente!\n Redirecionando para o menu anterior...");
             subMenuFabricar();
         }
-        produto.setQuantidadePossivel(quantidadepossivel);
+        return quantidadepossivel;
     }
 
 
