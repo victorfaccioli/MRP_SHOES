@@ -1,12 +1,11 @@
 package org.example;
 
-import org.example.DAO.MateriaDao;
 import org.example.configuration.Conexao;
 
 import java.lang.ref.WeakReference;
 import java.util.Scanner;
 
-import static org.example.DAO.MateriaDao.*;
+import static org.example.DAO.MaterialDao.*;
 import static org.example.DAO.ProdutoDAO.*;
 
 public class Main {
@@ -37,7 +36,7 @@ public class Main {
         System.out.println("||           opcao 4 - Sair            ||");
         System.out.println("-----------------------------------------");
 
-        int opt = input.nextInt();
+        Integer opt = input.nextInt();
 
         switch (opt) {
             case 1:
@@ -85,7 +84,7 @@ public class Main {
         System.out.println("||           opcao 2 - Produtos       ||");
         System.out.println("||           opcao 3 - Menu anterior  ||");
         System.out.println("----------------------------------------");
-        int option = input.nextInt();
+        Integer option = input.nextInt();
         switch (option){
             case 1:
                 System.out.println("-----------------ESTOQUE----------------------------------");
@@ -123,7 +122,7 @@ public class Main {
         System.out.println("||           opcao 1 - Produto        ||");
         System.out.println("||           opcao 2 - Menu           ||");
         System.out.println("----------------------------------------");
-        int option = input.nextInt();
+        Integer option = input.nextInt();
         switch (option){
             case 1:
                 fabricarProduto();

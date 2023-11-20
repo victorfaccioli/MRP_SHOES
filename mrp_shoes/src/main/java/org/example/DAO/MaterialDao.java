@@ -7,55 +7,51 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import static org.example.Main.menu;
-import static org.example.Main.subMenuEstoque;
+import static org.example.Main.*;
 
-public class MateriaDao {
+public class MaterialDao {
+
     public Integer materialId;
     public String nomeMaterial;
-    public Integer quantidadeMaterial;
-    public Integer quantidadeNecessario;
+    public static Integer quantidadeMaterial;
+    public Integer quantidadeNecessaria;
     public Integer produtoId;
-
 
     public Integer getMaterialId() {
         return materialId;
     }
-
     public void setMaterialId(Integer materialId) {
         this.materialId = materialId;
     }
-
     public String getNomeMaterial() {
         return nomeMaterial;
     }
-
     public void setNomeMaterial(String nomeMaterial) {
         this.nomeMaterial = nomeMaterial;
     }
-
     public Integer getQuantidadeMaterial() {
         return quantidadeMaterial;
     }
-
     public void setQuantidadeMaterial(Integer quantidadeMaterial) {
         this.quantidadeMaterial = quantidadeMaterial;
     }
-
     public Integer getQuantidadeNecessario() {
-        return quantidadeNecessario;
+        return quantidadeNecessaria;
     }
-
-    public void setQuantidadeNecessario(Integer quantidadeNecessario) {
-        this.quantidadeNecessario = quantidadeNecessario;
-    }
-
+    public void setQuantidadeNecessario(Integer quantidadeNecessario) {this.quantidadeNecessaria = quantidadeNecessario;}
     public Integer getProdutoId() {
         return produtoId;
     }
-
     public void setProdutoId(Integer produtoId) {
         this.produtoId = produtoId;
+    }
+    public MaterialDao() {
+
+    }
+    public MaterialDao(Integer quantidadeMaterial, Integer quantidadeNecessaria) {
+        this.quantidadeMaterial = quantidadeMaterial;
+        this.quantidadeNecessaria = quantidadeNecessaria;
+
     }
 
     public static void cadastrarMateria(){
@@ -90,11 +86,12 @@ public class MateriaDao {
             e.printStackTrace();
         }
         menu();
+
     }
 
     public static void verificarTodosMateriais() {
-        MateriaDao materialDao = new MateriaDao();
-        ArrayList<MateriaDao> dados = materialDao.estoqueTodosMateriais();
+        MaterialDao materialDao = new MaterialDao();
+        ArrayList<MaterialDao> dados = materialDao.estoqueTodosMateriais();
 
         int index = 0;
         System.out.println("+----+------------+------------+-------------+-------------------+");
@@ -102,7 +99,7 @@ public class MateriaDao {
         System.out.println("+----+------------| necessaria |  estoque    |-------------------+");
 
         while (index < dados.size()) {
-            MateriaDao materia = dados.get(index);
+            MaterialDao materia = dados.get(index);
             System.out.printf("| %-2d |  %-9s  |    %-2d    |    %-2d     |       %-2d        |\n",
                     materia.getMaterialId(),
                     materia.getNomeMaterial(),
@@ -126,12 +123,12 @@ public class MateriaDao {
     }
 
 
-    public ArrayList<MateriaDao> estoqueTodosMateriais() {
+    public ArrayList<MaterialDao> estoqueTodosMateriais() {
 
         Conexao c = new Conexao();
         Connection con = c.getConnection();
 
-        ArrayList<MateriaDao> list = new ArrayList<MateriaDao>();
+        ArrayList<MaterialDao> list = new ArrayList<MaterialDao>();
 
         try {
 
@@ -145,19 +142,20 @@ public class MateriaDao {
                 Integer quantidadeNecessaria = resultSet.getInt("quantidade_necessaria");
                 Integer produtoId = resultSet.getInt("produto_id");
 
-                MateriaDao materiaDao = new MateriaDao();
+                MaterialDao materialDao = new MaterialDao();
 
-                materiaDao.setMaterialId(materialId);
-                materiaDao.setNomeMaterial(nomeMaterial);
-                materiaDao.setQuantidadeMaterial(quantidadeMaterial);
-                materiaDao.setQuantidadeNecessario(quantidadeNecessaria);
-                materiaDao.setProdutoId(produtoId);
+                materialDao.setMaterialId(materialId);
+                materialDao.setNomeMaterial(nomeMaterial);
+                materialDao.setQuantidadeMaterial(quantidadeMaterial);
+                materialDao.setQuantidadeNecessario(quantidadeNecessaria);
+                materialDao.setProdutoId(produtoId);
 
-                list.add(materiaDao);
+                list.add(materialDao);
             }
 
             resultSet.close();
             p.close();
+
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -171,7 +169,7 @@ public class MateriaDao {
         Conexao c = new Conexao();
         Connection con = c.getConnection();
 
-        MateriaDao materiaDao = new MateriaDao();
+        MaterialDao materialDao = new MaterialDao();
         Scanner input = new Scanner(System.in);
 
 
@@ -179,6 +177,7 @@ public class MateriaDao {
         Integer ID_material = input.nextInt();
         System.out.println("Digite a quantidade que será adicionada ao estoque?:");
         Integer entradaMaterial = input.nextInt();
+
 
         try {
             PreparedStatement selectStatement = con.prepareStatement("SELECT material_id, quantidade_material " +
@@ -197,10 +196,7 @@ public class MateriaDao {
                 PreparedStatement updateStatement = con.prepareStatement("update materiais set quantidade_material = ? where material_id = ?");
                 updateStatement.setInt(1, newQuantidade);
                 updateStatement.setInt(2, currentId);
-                System.out.println(updateStatement);
                 updateStatement.executeUpdate();
-                System.out.println("Comando executado");
-
                 updateStatement.close();
             }
 
@@ -211,4 +207,29 @@ public class MateriaDao {
         }
     }
 
+
+
+    public static MaterialDao quantidadeMateriais(Integer produtoId) {
+        try (Scanner input = new Scanner(System.in);
+             Connection con = new Conexao().getConnection();
+             PreparedStatement p = con.prepareStatement("SELECT quantidade_material, quantidade_necessaria " +
+                     "FROM materiais WHERE produto_id = ?")) {
+
+            p.setInt(1, produtoId);
+            try (ResultSet resultSet = p.executeQuery()) {
+                if (resultSet.next()) {
+                    Integer quantidadeMaterial = resultSet.getInt("quantidade_material");
+                    Integer quantidadeNecessaria = resultSet.getInt("quantidade_necessaria");
+
+                    return new MaterialDao(quantidadeMaterial, quantidadeNecessaria);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Não há estoque do material suficiente!\n Redirecionando para o menu anterior...");
+            subMenuFabricar();
+        }
+
+        return null;
+    }
 }
