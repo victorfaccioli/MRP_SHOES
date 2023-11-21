@@ -84,14 +84,14 @@ public class ProdutoDAO {
         ArrayList<ProdutoDAO> dados = produtoDAO.estoqueProdutos();
 
         int index = 0;
-        System.out.println("+----+-----------+-------+");
-        System.out.println("| ID | Produto   | Preço |");
-        System.out.println("+----+-----------+-------+");
+        System.out.println("+----+-----------+-------+------------+");
+        System.out.println("| ID | Produto   | Preço | Quantidade |");
+        System.out.println("+----+-----------+-------+------------+");
 
         while (index < dados.size()) {
             ProdutoDAO produto = dados.get(index);
-            System.out.printf("| %-2d | %-9s | %-5.2f |\n",
-                    produto.getProdutoId(), produto.getNome(), produto.getPreco());
+            System.out.printf("| %-2d | %-9s | %-5.2f | %-2d |\n",
+                    produto.getProdutoId(), produto.getNome(), produto.getPreco(),produto.getQuantidadeProduto());
             index++;
         }
 
@@ -121,12 +121,15 @@ public class ProdutoDAO {
                 Integer produtoId = resultSet.getInt("produto_id");
                 String nome = resultSet.getString("nome_produto");
                 Double preco = resultSet.getDouble("preco");
+                int quantidade_produtos = resultSet.getInt("quantidade_produtos");
 
                 ProdutoDAO produtoDao = new ProdutoDAO();
                 produtoDao.setProdutoId(produtoId);
                 produtoDao.setNome(nome);
                 produtoDao.setPreco(preco);
+                produtoDao.setQuantidadeProduto(quantidade_produtos);
                 list.add(produtoDao);
+
             }
             resultSet.close();
             p.close();
@@ -140,8 +143,7 @@ public class ProdutoDAO {
 
 
     public static void fabricarProduto(){
-        Conexao c = new Conexao();
-        Connection con = c.getConnection();
+
         Scanner input = new Scanner(System.in);
         ProdutoDAO produto = new ProdutoDAO();
 
@@ -157,11 +159,13 @@ public class ProdutoDAO {
 
         if(quantidadeFabricar > 0 && quantidadeFabricar <= qtPossivelProduto){
             try{
-                Integer novaQuantidadeProduto = quantidadesProdutos(produto_id).getQuantidadeProduto() - quantidadeFabricar;
+                Integer novaQuantidadeProduto = quantidadesProdutos(produto_id).getQuantidadeProduto() + quantidadeFabricar;
 
                 Integer novaQuantidadeMaterial = quantidadeMateriais(produto_id).getQuantidadeMaterial() -
                         (quantidadeFabricar * quantidadeMateriais(produto_id).getQuantidadeNecessario());
 
+                Conexao c = new Conexao();
+                Connection con = c.getConnection();
                 PreparedStatement p = con.prepareStatement("update materiais " +
                         "join produto on produto.produto_id = materiais.produto_id " +
                         "set produto.quantidade_produtos = ?, materiais.quantidade_material = ? " +
@@ -169,23 +173,23 @@ public class ProdutoDAO {
                 p.setInt(1,novaQuantidadeProduto);
                 p.setInt(2,novaQuantidadeMaterial);
                 p.setInt(3,produto_id);
-                ResultSet resultSet = p.executeQuery();
+                int resultSet = p.executeUpdate();
 
-                resultSet.close();
                 p.close();
 
 
                 System.out.println("Enviado pedido para produção!!!\n Redirecionando para o menu anterior... ");
-                menu();
+                subMenuFabricar();
 
             }catch(SQLException e) {
                 System.out.println("Opção invalida!!!\n Redirecionando para o menu anterior... ");
+                subMenuFabricar();
             }
         }else if(quantidadeFabricar > qtPossivelProduto){
-
             System.out.println("Essa quantidade não pode ser fabricada por falta de material.");
-            menu();
+            subMenuFabricar();
         }
+        subMenuFabricar();
     }
     public static Integer quantidadePossivel(Integer id){
         Scanner input = new Scanner(System.in);

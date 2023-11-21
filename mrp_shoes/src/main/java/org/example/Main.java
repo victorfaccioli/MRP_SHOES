@@ -3,22 +3,16 @@ package org.example;
 import org.example.configuration.Conexao;
 
 import java.lang.ref.WeakReference;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.example.DAO.MaterialDao.*;
 import static org.example.DAO.ProdutoDAO.*;
 
 public class Main {
-    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         // TODO Auto-generated catch block
-        Conexao conexao = new Conexao();
-        conexao.getConnection();
-        WeakReference<Object> reference = new WeakReference<Object>(conexao);
-
-        conexao = new Conexao();
-        conexao.getConnection();
 
         System.out.println("-------------------------------------------");
         System.out.println("||------------Welcome to MRP-------------||");
@@ -29,36 +23,39 @@ public class Main {
 
     }
     public static void menu() {
-        System.out.println("------------------MENU------------------");
-        System.out.println("||           opcao 1 - Cadastrar       ||");
-        System.out.println("||           opcao 2 - Estoque         ||");
-        System.out.println("||           opcao 3 - Fabricar        ||");
-        System.out.println("||           opcao 4 - Sair            ||");
-        System.out.println("-----------------------------------------");
+            Scanner input = new Scanner(System.in);
+            System.out.println("------------------MENU------------------");
+            System.out.println("||           opcao 1 - Cadastrar       ||");
+            System.out.println("||           opcao 2 - Estoque         ||");
+            System.out.println("||           opcao 3 - Fabricar        ||");
+            System.out.println("||           opcao 4 - Sair            ||");
+            System.out.println("-----------------------------------------");
 
-        Integer opt = input.nextInt();
-
-        switch (opt) {
-            case 1:
-                subMenuCadastro();
-                break;
-            case 2:
-                subMenuEstoque();
-                break;
-            case 3:
-                subMenuFabricar();
-                break;
-            case 4:
-                System.out.println("Volte Sempre");
-                System.exit(0);
-            default:
-                System.out.println("Opcao Invalida!!!");
-                menu();
-                break;
-        }
+            if(input.hasNextInt()) {
+                Integer opt = input.nextInt();
+                switch (opt) {
+                    case 1:
+                        subMenuCadastro();
+                        break;
+                    case 2:
+                        subMenuEstoque();
+                        break;
+                    case 3:
+                        subMenuFabricar();
+                        break;
+                    case 4:
+                        System.out.println("Volte Sempre");
+                        System.exit(0);
+                    default:
+                        System.out.println("Opcao Invalida!!!");
+                        menu();
+                        break;
+                }
+            }
     }
 
     public static void subMenuCadastro(){
+        Scanner input = new Scanner(System.in);
         System.out.println("-----------------CADASTRO--------------");
         System.out.println("||           opcao 1 - Produto        ||");
         System.out.println("||           opcao 2 - Material       ||");
@@ -74,11 +71,12 @@ public class Main {
             default:
                 System.out.println("Opcao Invalida!!!");
                 menu();
-
+                break;
         }
     }
 
     public static void subMenuEstoque(){
+        Scanner input = new Scanner(System.in);
         System.out.println("-----------------ESTOQUE----------------");
         System.out.println("||           opcao 1 - Materiais      ||");
         System.out.println("||           opcao 2 - Produtos       ||");
@@ -99,25 +97,32 @@ public class Main {
                         break;
                     case 2:
                         addEstoqueMateriais();
+                        break;
                     case 3:
                         menu();
+                        break;
                     default:
                         System.out.println("Opcao Invalida!!!");
                         subMenuEstoque();
-
+                        break;
                 }
+                break;
 
             case 2:
                 verificarTodosProdutos();
+                break;
+
             case 3:
                 menu();
+                break;
             default:
                 System.out.println("Opcao Invalida!!!");
                 subMenuEstoque();
-
+                break;
         }
     }
     public static void subMenuFabricar(){
+        Scanner input = new Scanner(System.in);
         System.out.println("------------------Fabricar--------------");
         System.out.println("||           opcao 1 - Produto        ||");
         System.out.println("||           opcao 2 - Menu           ||");
@@ -128,10 +133,11 @@ public class Main {
                 fabricarProduto();
             case 2:
                 menu();
+                break;
             default:
                 System.out.println("Opcao Invalida!!!");
                 subMenuFabricar();
-
+                break;
         }
     }
 }
